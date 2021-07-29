@@ -1,6 +1,11 @@
 package com.cotto.petclinic.model;
 
-public class Person {
+import javax.persistence.Entity;
+
+public class Person extends BaseEntity{
+
+    private Long id;
+
     private String firstName;
     private String lastName;
 
