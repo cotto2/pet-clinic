@@ -1,9 +1,8 @@
 package com.cotto.petclinic.services.map;
 
 import com.cotto.petclinic.model.Vet;
-import com.cotto.petclinic.model.Vet;
-import com.cotto.petclinic.services.CrudService;
-import com.cotto.petclinic.services.VetService;
+import com.cotto.petclinic.model.Visit;
+import com.cotto.petclinic.services.VisitService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +10,9 @@ import java.util.Set;
 
 @Service
 @Profile("default")
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+public class VisitServiceMap extends AbstractMapService<Visit,Long> implements VisitService {
     @Override
-    public Set<Vet> findAll() {
+    public Set<Visit> findAll() {
         return super.findAll();
     }
 
@@ -23,17 +22,17 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
     }
 
     @Override
-    public void delete(Vet object) {
+    public void delete(Visit object) {
         super.delete(object);
     }
 
     @Override
-    public Vet save(Vet object) {
+    public Visit save(Visit object) {
         return super.save(object);
     }
 
     @Override
-    public Vet findById(Long id) {
+    public Visit findById(Long id) {
         return super.findById(id);
     }
 }
