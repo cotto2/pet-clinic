@@ -5,6 +5,7 @@ import com.cotto.petclinic.model.Pet;
 import com.cotto.petclinic.model.PetType;
 import com.cotto.petclinic.repositories.OwnerRepository;
 import com.cotto.petclinic.services.OwnerService;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,33 +35,21 @@ class OwnerServiceJpaIT {
     OwnerService ownerService;
 
     @Test
-    void findAllByLastNameLike() {
-        PetType dog = new PetType();
-        dog.setName("dog");
-
-
-        PetType cat = new PetType();
-        cat.setName("cat");
-
-
-        Owner owner1 = new Owner();
-        owner1.setFirstName("Michael");
-        owner1.setLastName("Scott");
-        owner1.setAddress("1431 Harmony Ln");
-        owner1.setCity("Annapolis");
-        owner1.setTelephone("410-757-7104");
-
-        Pet mikesPet = new Pet();
-        mikesPet.setOwner(owner1);
-        mikesPet.setBirthDate(LocalDate.now());
-        mikesPet.setName("Kazbo");
-        mikesPet.setPetType(dog);
-        owner1.getPets().add(mikesPet);
-
-
+    void testFindAllByLastNameLikeExact() {
         List<Owner> ownerList = ownerService.findAllByLastNameLike("Scott");
         assertEquals(1, ownerList.size());
-
-
     }
+
+    @Test
+    void testFindAllByLastNameLike() {
+        List<Owner> ownerList = ownerService.findAllByLastNameLike("S%");
+        assertEquals(1, ownerList.size());
+    }
+
+    @Test
+    void testFindAllByLastNameLikeAll() {
+        List<Owner> ownerList = ownerService.findAllByLastNameLike("");
+        assertEquals(1, ownerList.size());
+    }
+
 }
