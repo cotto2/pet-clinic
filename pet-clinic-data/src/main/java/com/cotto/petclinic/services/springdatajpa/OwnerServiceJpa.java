@@ -2,13 +2,12 @@ package com.cotto.petclinic.services.springdatajpa;
 
 import com.cotto.petclinic.model.Owner;
 import com.cotto.petclinic.repositories.OwnerRepository;
-import com.cotto.petclinic.repositories.PetRepository;
-import com.cotto.petclinic.repositories.PetTypeRepository;
 import com.cotto.petclinic.services.OwnerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -51,5 +50,10 @@ public class OwnerServiceJpa implements OwnerService {
     @Override
     public Owner findByLastName(String lastName) {
         return ownerRepository.findByLastName(lastName).orElse(null);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        return ownerRepository.findByLastNameLike(lastName);
     }
 }

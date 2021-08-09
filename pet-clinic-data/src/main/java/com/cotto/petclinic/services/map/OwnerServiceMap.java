@@ -2,16 +2,14 @@ package com.cotto.petclinic.services.map;
 
 import com.cotto.petclinic.model.Owner;
 import com.cotto.petclinic.model.Pet;
-import com.cotto.petclinic.services.CrudService;
 import com.cotto.petclinic.services.OwnerService;
 import com.cotto.petclinic.services.PetService;
 import com.cotto.petclinic.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @Profile("default")
@@ -80,5 +78,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
         return map.values().stream()
                 .filter(o -> o.getLastName().equalsIgnoreCase(lastName)).findAny().orElse(null);
 
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        //todo impl
+        return null;
     }
 }
