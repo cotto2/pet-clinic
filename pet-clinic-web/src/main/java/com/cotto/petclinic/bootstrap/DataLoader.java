@@ -5,6 +5,7 @@ import com.cotto.petclinic.model.Pet;
 import com.cotto.petclinic.model.PetType;
 import com.cotto.petclinic.model.Vet;
 import com.cotto.petclinic.services.OwnerService;
+import com.cotto.petclinic.services.PetService;
 import com.cotto.petclinic.services.PetTypeService;
 import com.cotto.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
@@ -19,11 +20,13 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final PetService petService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.petService = petService;
     }
 
     @Override
@@ -51,7 +54,10 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setName("Kazbo");
         owner1.getPets().add(mikesPet);
 
+
         ownerService.save(owner1);
+        petService.save(mikesPet);
+
 
         Vet vet1 = new Vet();
         vet1.setFirstName("W.B.");
