@@ -22,7 +22,6 @@ import java.util.Optional;
 import java.util.Set;
 
 @Controller
-@ActiveProfiles("springdatajpa")
 @RequestMapping("/owners/{ownerId}")
 public class PetController {
 
