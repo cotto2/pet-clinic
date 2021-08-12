@@ -17,10 +17,6 @@ public class Vet extends Person{
             inverseJoinColumns = @JoinColumn(name = "speciality_id"))
     private Set<Speciality> specialities = new HashSet<>();
 
-    public int getNrOfSpecialities() {
-        return specialities.size();
-    }
-
     public void addSpeciality(Speciality speciality) {
         specialities.add(speciality);
     }

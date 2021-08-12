@@ -18,7 +18,7 @@
         <td th:text="${vet.firstName + ' ' + vet.lastName}"></td>
         <td><span th:each="speciality : ${vet.specialities}"
           th:text="${speciality.name + ' '}" /> <span
-          th:if="${vet.nrOfSpecialities == 0}">none</span></td>
+          th:if="${vet?.specialities?.size() == 0}">none</span></td>
       </tr>
     </tbody>
   </table>
