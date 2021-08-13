@@ -1,9 +1,6 @@
 package com.cotto.petclinic.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;
@@ -15,8 +12,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
-@EqualsAndHashCode(exclude = {"visits", "owner", "petType"})
+@NoArgsConstructor
+@Getter
+@Setter
 public class Pet extends BaseEntity{
 
     private String name;
